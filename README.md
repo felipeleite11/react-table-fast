@@ -8,6 +8,8 @@
 
 ```bash
 npm install --save react-table-fast
+or
+yarn add react-table-fast
 ```
 
 ## Usage
@@ -15,12 +17,11 @@ npm install --save react-table-fast
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-table-fast'
-import 'react-table-fast/dist/index.css'
+import Table from 'react-table-fast'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Table />
   }
 }
 ```
