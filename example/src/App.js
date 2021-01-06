@@ -1,19 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React from "react"
 
-import ProgressBar from "react-table-fast";
+import { Table, TableHeader, TableBody, TableFooter, TableDataTypes } from "react-table-fast"
 
 const App = () => {
-  const [completed, setCompleted] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-  }, []);
-
   return (
-    <div className="App">
-      <ProgressBar bgcolor={"#6a1b9a"} completed={completed} />
-    </div>
-  );
-};
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Table
+        filterable
+        style={{ width: 600 }}
+      >
+        <TableHeader
+          columns={[
+            { name: 'Nome', attr: 'name' },
+            { name: 'Idade', attr: 'age' }
+          ]}
+        />
 
-export default App;
+        <TableBody
+          data={[
+            { id: 1, name: 'Felipe', age: 31 },
+            { id: 2, name: 'Ana', age: 24 },
+            { id: 3, name: 'João', age: 32 },
+            { id: 4, name: 'Pedro', age: 29 }
+          ]} />
+
+          <TableFooter
+            columns={[
+              { text: 'TOTAL', colspan: 1 },
+              {
+                calculate: {
+                  type: TableDataTypes.SUM,
+                  attr: 'age'
+                }
+              }
+            ]}
+          />
+      </Table>
+    </div>
+  )
+}
+
+export default App
