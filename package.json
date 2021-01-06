@@ -1,10 +1,11 @@
 {
   "name": "react-table-fast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to render HTML tables with advanced features.",
   "author": "felipeleite11",
   "license": "MIT",
   "repository": "felipeleite11/react-table-fast",
+  "keywords": ["table", "datatable", "list", "sortable"],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
