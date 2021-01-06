@@ -8,7 +8,9 @@
 
 ```bash
 npm install --save react-table-fast
+```
 or
+```bash
 yarn add react-table-fast
 ```
 
@@ -17,14 +19,63 @@ yarn add react-table-fast
 ```jsx
 import React, { Component } from 'react'
 
-import Table from 'react-table-fast'
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableDataTypes
+} from 'react-table-fast'
 
-class Example extends Component {
+const App = () => {
   render() {
-    return <Table />
+    return
+      <Table
+        filterable
+        style={{ width: 600 }}
+      >
+        <TableHeader
+          columns={[
+            { name: 'Nome', attr: 'name' },
+            { name: 'Idade', attr: 'age' }
+          ]}
+        />
+
+        <TableBody
+          data={[
+            { id: 1, name: 'Elvis', age: 31 },
+            { id: 2, name: 'Ana', age: 24 },
+            { id: 3, name: 'John', age: 32 },
+            { id: 4, name: 'Will', age: 29 }
+          ]} />
+
+          <TableFooter
+            columns={[
+              { text: 'TOTAL', colspan: 1 },
+              {
+                calculate: {
+                  type: TableDataTypes.SUM,
+                  attr: 'age'
+                }
+              }
+            ]}
+          />
+      </Table>
   }
 }
+
+export default App
 ```
+
+Expected result:
+
+|  Name 	| Age 	|
+|:-----:	|:---:	|
+| Elvis 	|  31 	|
+|  Ana  	|  24 	|
+|  John 	|  32 	|
+| Will  	| 29  	|
+| Total 	| 116 	|
 
 ## License
 
