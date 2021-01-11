@@ -1,17 +1,25 @@
 import styled, { css } from 'styled-components'
 
 export const THead = styled.thead`
-  background-color: pink;
+    background-color: #0002;
 
-  th {
-    ${(props) =>
-      props.sortable &&
-      css`
-        cursor: pointer;
+    th {
+        padding: 16px;
 
-        svg {
-          margin-left: 8px;
+        ${(props) =>
+            props.sortable &&
+            css`
+                cursor: pointer;
+
+                svg {
+                    margin: 0 8px;
+                }
+            `}
+
+        > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-      `}
-  }
+    }
 `

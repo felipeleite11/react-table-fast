@@ -10,16 +10,23 @@ import Header from '../src/components/Header'
 import Body from '../src/components/Body'
 import Footer from '../src/components/Footer'
 import { default as DataTypes } from '../src/components/TableDataTypes'
+import * as Masks from '../src/util/masks'
 
 import { Container } from './styles/style'
 
 export const TableDataTypes = DataTypes
+export const TableMasks = Masks
 
 export const TableHeader = Header
 export const TableBody = Body
 export const TableFooter = Footer
 
-export const Table = ({ children, filterable = false, style = {} }) => {
+export const Table = ({
+    children,
+    filterable = false,
+    style = {},
+    className = ''
+}) => {
     const [headers, setHeaders] = useState([])
     const [data, setData] = useState([])
     const [searchedData, setSearchedData] = useState([])
@@ -69,9 +76,13 @@ export const Table = ({ children, filterable = false, style = {} }) => {
             }}
         >
             <Container>
-                {filterable && <TextboxFilter />}
+                {filterable && (
+                    <TextboxFilter position='right' style={{ width: '40%' }} />
+                )}
 
-                <TableFast style={style}>{children}</TableFast>
+                <TableFast style={style} className={className}>
+                    {children}
+                </TableFast>
             </Container>
         </TableContext.Provider>
     )

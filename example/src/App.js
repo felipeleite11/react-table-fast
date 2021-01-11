@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Table, TableHeader, TableBody, TableFooter, TableDataTypes } from "react-table-fast"
+import { Table, TableHeader, TableBody, TableFooter, TableDataTypes, TableMasks } from "react-table-fast"
 
 const App = () => {
   return (
@@ -8,29 +8,32 @@ const App = () => {
       <Table
         filterable
         style={{ width: 600 }}
+        className="highlight"
       >
         <TableHeader
           columns={[
-            { name: 'Nome', attr: 'name' },
-            { name: 'Idade', attr: 'age' }
+            { name: 'Name', attr: 'name' },
+            { name: 'Age', attr: 'age' },
+            { name: 'Amount', attr: 'amount', format: TableMasks.currency }
           ]}
         />
 
         <TableBody
           data={[
-            { id: 1, name: 'Felipe', age: 31 },
-            { id: 2, name: 'Ana', age: 24 },
-            { id: 3, name: 'João', age: 32 },
-            { id: 4, name: 'Pedro', age: 29 }
+            { id: 1, name: 'Felipe', age: 31, amount: 1280.45 },
+            { id: 2, name: 'Ana', age: 24, amount: 1470.13 },
+            { id: 3, name: 'João', age: 32, amount: 2170.77 },
+            { id: 4, name: 'Pedro', age: 29, amount: 1421.8 }
           ]} />
 
           <TableFooter
             columns={[
-              { text: 'TOTAL', colspan: 1 },
+              { text: 'TOTAL', colspan: 2 },
               {
                 calculate: {
-                  type: TableDataTypes.SUM,
-                  attr: 'age'
+                  type: TableDataTypes.AVG,
+                  attr: 'amount',
+                  format: TableMasks.currency
                 }
               }
             ]}

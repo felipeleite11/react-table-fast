@@ -2,20 +2,25 @@ import React, { useContext } from 'react'
 
 import TableContext from '../../contexts/TableContext'
 
-export default function ({ data }) {
-  const { setData, searchedData, headers } = useContext(TableContext)
+import { TBody } from './styles'
 
-  setData(data)
+export default function ({ data, style = {}, className = '' }) {
+    const { setData, searchedData, headers } = useContext(TableContext)
 
-  return (
-    <tbody>
-      {searchedData.map((item) => (
-        <tr key={item.id}>
-          {headers.map((header) => (
-            <td key={header.attr}>{item[header.attr]}</td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  )
+    setData(data)
+
+    return (
+        <TBody style={style} className={className}>
+            {searchedData.map((item) => (
+                <tr key={item.id}>
+                    {headers.map((header) => (
+                        <td key={header.attr}>
+                            {header.format?.(item[header.attr]) ||
+                                item[header.attr]}
+                        </td>
+                    ))}
+                </tr>
+            ))}
+        </TBody>
+    )
 }
