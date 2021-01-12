@@ -31,7 +31,7 @@ const App = () => {
               { text: 'TOTAL', colspan: 2 },
               {
                 calculate: {
-                  type: TableDataTypes.AVG,
+                  type: TableDataTypes.SUM,
                   attr: 'amount',
                   format: TableMasks.currency
                 }

@@ -30,6 +30,10 @@ export default function ({ columns, style = {}, className = '' }) {
                     ) / searchedData.length
                 return format?.(avg) || avg
 
+            case dataTypes.CNT:
+                const cnt = searchedData.length
+                return format?.(cnt) || cnt
+
             default:
                 return ''
         }

@@ -19,7 +19,7 @@ yarn add react-table-fast
 1. Create a container to position the table
 2. In the header, associate the column names to the data attributes
 3. In the body, just set the data to show
-4. In the footer (optional), you can apply aggregation function as SUM or AVG
+4. In the footer (optional), you can apply aggregation function as SUM, AVG or CNT (count)
 
 ```jsx
 import React from "react"
