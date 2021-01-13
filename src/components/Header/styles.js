@@ -21,5 +21,9 @@ export const THead = styled.thead`
             justify-content: space-between;
             align-items: center;
         }
+
+        &.action {
+            width: 30px;
+        }
     }
 `

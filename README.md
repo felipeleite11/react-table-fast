@@ -78,6 +78,101 @@ Expected result:
 	<img src="https://user-images.githubusercontent.com/54327441/104172845-a96b5f80-53e3-11eb-89f5-33d0ebb59c58.gif" height="300" width="460" alt="Demo screen" />
 </p>
 
+It's possible to define an action by clicking on a table row using the **handleRowClick** attribute being passed to the **TableBody** component, as below:
+
+```jsx
+<TableBody
+  data={[
+    { id: 1, name: 'Name 1', age: 31, amount: 1280.45 },
+    { id: 2, name: 'Name 2', age: 24, amount: 1470.13 },
+    { id: 3, name: 'Name 3', age: 32, amount: 2170.77 },
+    { id: 4, name: 'Name 4', age: 29, amount: 553.8 },
+    { id: 5, name: 'Name 5', age: 43, amount: 1683.8 },
+    { id: 6, name: 'Name 6', age: 20, amount: 778.8 },
+    { id: 7, name: 'Name 7', age: 56, amount: 344.8 }
+  ]}
+  handleRowClick={row => {
+    console.log(`${row.name}'s row has clicked!`)
+  }}
+/>
+```
+<br/>
+
+## API Reference
+
+<font size="4">`<TableFast>`</font>
+
+It is a wrapper, containing all other components.
+
+|  Attribute 	| Default 	|   Type  	|
+|:----------:	|:-------:	|:-------:	|
+| filterable 	|  false  	| boolean 	|
+|  className 	|    ''   	|  string 	|
+|    style   	|    {}   	|  object 	|
+
+<br/><font size="4">`<TableBody>`</font>
+
+Contains all the data to be listed.
+
+|     Attribute    	|  Default  	|   Type   	|
+|:----------------:	|:---------:	|:--------:	|
+| data             	|    null   	|   array  	|
+| handleRowClick   	| undefined 	| function 	|
+| deletion         	| undefined 	|    {}    	|
+| deletion.handler 	| undefined 	| function 	|
+| deletion.effect  	| undefined 	| fadeOut  	|
+
+<br/><font size="4">`<TableHeader>`</font>
+
+Contains table headings, with parameterized titles and sorting action.
+
+| Attribute 	|  Default  	|   Type  	|
+|:---------:	|:---------:	|:-------:	|
+|  columns  	| undefined 	|  array  	|
+|  sortable 	|    true   	| boolean 	|
+|   style   	|     {}    	|  object 	|
+| className 	|     ''    	|  string 	|
+
+<br/><font size="4">`<TableFooter>`</font>
+
+It can display the sum of a given numeric column, the total number of records or an arithmetic mean, through the aggregation functions available in the **TableAggregationFunctions** component.
+
+| Attribute 	|  Default  	|  Type  	|
+|:---------:	|:---------:	|:------:	|
+|  columns  	| undefined 	|  array 	|
+|   style   	|     {}    	| object 	|
+| className 	|     ''    	| string 	|
+
+<br/><font size="4">`TableAggregationFunctions`</font>
+
+Provides some aggregation functions to be used in conjunction with the TableFooter component.
+
+| Constant 	|                 Implements                 	|
+|:--------:	|:------------------------------------------:	|
+|    AVG   	| Arithmetic mean over the specified column. 	|
+|    SUM   	| The summation over the specified column.   	|
+|    CNT   	| The total number of columns.               	|
+
+<br/><font size="4">`TableHoverEffects`</font>
+
+Provides some hover effects for action icons.
+
+|  Effect 	|
+|:-------:	|
+|  ROTATE 	|
+|  SCALE  	|
+| OPACITY 	|
+
+<br/><font size="4">`TableMasks`</font>
+
+It must be used within the objects contained in the date, passed to the **THeader** component. It provides some common masks that will be applied to all values in the specified column.
+
+|  Mask   	|
+|:-------:	|
+| currency 	|
+
+<br/>
+
 ## License
 
 MIT © [felipeleite11](https://github.com/felipeleite11)

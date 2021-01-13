@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa'
 
 import TableContext from '../../contexts/TableContext'
@@ -11,11 +11,17 @@ export default function ({
     style = {},
     className = ''
 }) {
-    const { setHeaders, sortData, sortDirection, sortedBy } = useContext(
-        TableContext
-    )
+    const {
+        setHeaders,
+        sortData,
+        sortDirection,
+        sortedBy,
+        deletion
+    } = useContext(TableContext)
 
-    setHeaders(columns)
+    useEffect(() => {
+        setHeaders(columns)
+    }, [])
 
     return (
         <THead sortable={sortable} style={style} className={className}>
@@ -41,6 +47,8 @@ export default function ({
                         </div>
                     </th>
                 ))}
+
+                {!!deletion && <th className='action'> </th>}
             </tr>
         </THead>
     )

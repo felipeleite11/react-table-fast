@@ -9,13 +9,15 @@ import Table from '../src/components/Table'
 import Header from '../src/components/Header'
 import Body from '../src/components/Body'
 import Footer from '../src/components/Footer'
-import { default as DataTypes } from '../src/components/TableDataTypes'
 import * as Masks from '../src/util/masks'
+import * as HoverEffects from '../src/util/hover-effects'
+import * as AggregationFunctions from '../src/util/aggregation-functions'
 
 import { Container } from './styles/style'
 
-export const TableDataTypes = DataTypes
+export const TableAggregationFunctions = AggregationFunctions
 export const TableMasks = Masks
+export const TableHoverEffects = HoverEffects
 
 export const TableHeader = Header
 export const TableBody = Body
@@ -33,6 +35,7 @@ export const TableFast = ({
     const [search, setSearch] = useState('')
     const [sortDirection, setSortDirection] = useState('ASC')
     const [sortedBy, setSortedBy] = useState(null)
+    const [deletion, setDeletion] = useState(null)
 
     function filterApply() {
         setSearchedData(
@@ -72,7 +75,9 @@ export const TableFast = ({
                 sortData,
                 sortDirection,
                 sortedBy,
-                dataTypes: DataTypes
+                aggregationFunctions: AggregationFunctions,
+                setDeletion,
+                deletion
             }}
         >
             <Container>

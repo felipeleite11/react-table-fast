@@ -5,7 +5,7 @@ import TableContext from '../../contexts/TableContext'
 import { TFoot } from './styles'
 
 export default function ({ columns, style = {}, className = '' }) {
-    const { searchedData, dataTypes } = useContext(TableContext)
+    const { searchedData, aggregationFunctions } = useContext(TableContext)
 
     function calculate(params) {
         if (!params) {
@@ -15,14 +15,14 @@ export default function ({ columns, style = {}, className = '' }) {
         const { type, attr, format } = params
 
         switch (type) {
-            case dataTypes.SUM:
+            case aggregationFunctions.SUM:
                 const sum = searchedData.reduce(
                     (result, item) => result + item[attr],
                     0
                 )
                 return format?.(sum) || sum
 
-            case dataTypes.AVG:
+            case aggregationFunctions.AVG:
                 const avg =
                     searchedData.reduce(
                         (result, item) => result + item[attr],
@@ -30,7 +30,7 @@ export default function ({ columns, style = {}, className = '' }) {
                     ) / searchedData.length
                 return format?.(avg) || avg
 
-            case dataTypes.CNT:
+            case aggregationFunctions.CNT:
                 const cnt = searchedData.length
                 return format?.(cnt) || cnt
 
