@@ -5,7 +5,7 @@ import TableContext from './contexts/TableContext'
 import { comparisonFunction } from './util/sort'
 
 import TextboxFilter from '../src/components/TextboxFilter'
-import TableFast from '../src/components/Table'
+import Table from '../src/components/Table'
 import Header from '../src/components/Header'
 import Body from '../src/components/Body'
 import Footer from '../src/components/Footer'
@@ -21,7 +21,7 @@ export const TableHeader = Header
 export const TableBody = Body
 export const TableFooter = Footer
 
-export const Table = ({
+export const TableFast = ({
     children,
     filterable = false,
     style = {},
@@ -80,9 +80,9 @@ export const Table = ({
                     <TextboxFilter position='right' style={{ width: '40%' }} />
                 )}
 
-                <TableFast style={style} className={className}>
+                <Table style={style} className={className}>
                     {children}
-                </TableFast>
+                </Table>
             </Container>
         </TableContext.Provider>
     )

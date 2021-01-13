@@ -24,7 +24,7 @@ export default function ({
                     <th
                         key={item.name}
                         onClick={() => sortable && sortData(item.attr)}
-                        style={{ width: `${100 / columns.length}%` }}
+                        style={item.style || {}}
                     >
                         <div>
                             {item.name}
