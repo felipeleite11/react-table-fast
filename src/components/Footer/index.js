@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 
-import TableContext from '../../contexts/TableContext'
+import { TableContext } from '../../contexts/TableContext'
 
 import { TFoot } from './styles'
 
 export default function ({ columns, style = {}, className = '' }) {
-    const { searchedData, aggregationFunctions } = useContext(TableContext)
+    const { searchedData, aggregationFunctions, deletion } = useContext(
+        TableContext
+    )
 
     function calculate(params) {
         if (!params) {
@@ -20,6 +22,7 @@ export default function ({ columns, style = {}, className = '' }) {
                     (result, item) => result + item[attr],
                     0
                 )
+                console.log(sum)
                 return format?.(sum) || sum
 
             case aggregationFunctions.AVG:
@@ -48,6 +51,8 @@ export default function ({ columns, style = {}, className = '' }) {
                             (item.calculate ? calculate(item.calculate) : '')}
                     </td>
                 ))}
+
+                {/* {deletion && <td />} */}
             </tr>
         </TFoot>
     )

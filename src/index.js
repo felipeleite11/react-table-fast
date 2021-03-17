@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import TableContext from './contexts/TableContext'
-
-import { comparisonFunction } from './util/sort'
+import TableProvider from './contexts/TableContext'
 
 import TextboxFilter from '../src/components/TextboxFilter'
 import Table from '../src/components/Table'
 import Header from '../src/components/Header'
 import Body from '../src/components/Body'
 import Footer from '../src/components/Footer'
-import * as Masks from '../src/util/masks'
+import * as Formats from '../src/util/format'
 import * as HoverEffects from '../src/util/hover-effects'
 import * as AggregationFunctions from '../src/util/aggregation-functions'
 
 import { Container } from './styles/style'
 
 export const TableAggregationFunctions = AggregationFunctions
-export const TableMasks = Masks
+export const TableFormats = Formats
 export const TableHoverEffects = HoverEffects
 
 export const TableHeader = Header
@@ -29,57 +27,8 @@ export const TableFast = ({
     style = {},
     className = ''
 }) => {
-    const [headers, setHeaders] = useState([])
-    const [data, setData] = useState([])
-    const [searchedData, setSearchedData] = useState([])
-    const [search, setSearch] = useState('')
-    const [sortDirection, setSortDirection] = useState('ASC')
-    const [sortedBy, setSortedBy] = useState(null)
-    const [deletion, setDeletion] = useState(null)
-
-    function filterApply() {
-        setSearchedData(
-            data.filter((item) => item.name.toLowerCase().search(search) >= 0)
-        )
-    }
-
-    useEffect(() => {
-        setSearchedData(data)
-    }, [data])
-
-    useEffect(() => {
-        filterApply()
-    }, [search])
-
-    function sortData(attr) {
-        const sorted = data.sort(comparisonFunction(attr, sortDirection))
-
-        setSortedBy(attr)
-        setData(sorted)
-        filterApply()
-
-        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
-    }
-
     return (
-        <TableContext.Provider
-            value={{
-                data,
-                setData,
-                headers,
-                setHeaders,
-                search,
-                setSearch,
-                setSearchedData,
-                searchedData,
-                sortData,
-                sortDirection,
-                sortedBy,
-                aggregationFunctions: AggregationFunctions,
-                setDeletion,
-                deletion
-            }}
-        >
+        <TableProvider>
             <Container>
                 {filterable && (
                     <TextboxFilter position='right' style={{ width: '40%' }} />
@@ -89,6 +38,6 @@ export const TableFast = ({
                     {children}
                 </Table>
             </Container>
-        </TableContext.Provider>
+        </TableProvider>
     )
 }

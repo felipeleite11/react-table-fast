@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa'
 
-import TableContext from '../../contexts/TableContext'
+import { TableContext } from '../../contexts/TableContext'
 
 import { THead } from './styles'
 

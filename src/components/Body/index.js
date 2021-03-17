@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { FiTrash } from 'react-icons/fi'
 
-import TableContext from '../../contexts/TableContext'
+import { TableContext } from '../../contexts/TableContext'
 
 import { ROTATE } from '../../util/hover-effects'
 

@@ -24,7 +24,7 @@ yarn add react-table-fast
 ```jsx
 import React from "react"
 
-import { TableFast, TableHeader, TableBody, TableFooter, TableAggregationFunctions, TableMasks } from "react-table-fast"
+import { TableFast, TableHeader, TableBody, TableFooter, TableAggregationFunctions, TableFormats } from "react-table-fast"
 
 const App = () => {
   return (
@@ -39,7 +39,7 @@ const App = () => {
           columns={[
             { name: 'Name', attr: 'name' },
             { name: 'Age', attr: 'age' },
-            { name: 'Amount', attr: 'amount', format: TableMasks.currency }
+            { name: 'Amount', attr: 'amount', format: TableFormats.currency }
           ]}
         />
 
@@ -58,7 +58,7 @@ const App = () => {
                 calculate: {
                   type: TableAggregationFunctions.SUM,
                   attr: 'amount',
-                  format: TableMasks.currency
+                  format: TableFormats.currency
                 }
               }
             ]}

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { FaSearch } from 'react-icons/fa'
 
-import TableContext from '../../contexts/TableContext'
+import { TableContext } from '../../contexts/TableContext'
 
 import { Container } from './styles'
 
