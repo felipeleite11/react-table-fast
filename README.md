@@ -24,13 +24,13 @@ yarn add react-table-fast
 ```jsx
 import React from "react"
 
-import { Table, TableHeader, TableBody, TableFooter, TableDataTypes, TableMasks } from "react-table-fast"
+import { TableFast, TableHeader, TableBody, TableFooter, TableAggregationFunctions, TableMasks } from "react-table-fast"
 
 const App = () => {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-      <Table
+      <TableFast
         filterable
         style={{ width: 600 }}
         className="highlight"
@@ -56,14 +56,14 @@ const App = () => {
               { text: 'TOTAL', colspan: 2 },
               {
                 calculate: {
-                  type: TableDataTypes.SUM,
+                  type: TableAggregationFunctions.SUM,
                   attr: 'amount',
                   format: TableMasks.currency
                 }
               }
             ]}
           />
-      </Table>
+      </TableFast>
 
     </div>
   )
