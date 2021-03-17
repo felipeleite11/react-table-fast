@@ -22,7 +22,6 @@ export default function ({ columns, style = {}, className = '' }) {
                     (result, item) => result + item[attr],
                     0
                 )
-                console.log(sum)
                 return format?.(sum) || sum
 
             case aggregationFunctions.AVG:

@@ -52,7 +52,7 @@ export default function ({
                 >
                     {headers.map((header) => (
                         <td key={header.attr}>
-                            {header.format?.(item[header.attr]) ||
+                            {header.format?.(item[header.attr], item.id) ||
                                 item[header.attr]}
                         </td>
                     ))}
