@@ -151,7 +151,7 @@ Provides some aggregation functions to be used in conjunction with the TableFoot
 |:--------:	|:------------------------------------------:	|
 |    AVG   	| Arithmetic mean over the specified column. 	|
 |    SUM   	| The summation over the specified column.   	|
-|    CNT   	| The total number of columns.               	|
+|    CNT   	| The total number of rows.                 	|
 
 <br/><font size="4">`TableHoverEffects`</font>
 
@@ -163,13 +163,15 @@ Provides some hover effects for action icons.
 |  SCALE  	|
 | OPACITY 	|
 
-<br/><font size="4">`TableMasks`</font>
+<br/><font size="4">`TableFormats`</font>
 
 It must be used within the objects contained in the date, passed to the **THeader** component. It provides some common masks that will be applied to all values in the specified column.
 
 |  Mask   	|
 |:-------:	|
 | currency 	|
+| avatar   	|
+| component	|
 
 <br/>
 
