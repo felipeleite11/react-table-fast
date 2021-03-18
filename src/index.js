@@ -11,8 +11,6 @@ import * as Formats from '../src/util/format'
 import * as HoverEffects from '../src/util/hover-effects'
 import * as AggregationFunctions from '../src/util/aggregation-functions'
 
-import { Container } from './styles/style'
-
 export const TableAggregationFunctions = AggregationFunctions
 export const TableFormats = Formats
 export const TableHoverEffects = HoverEffects
@@ -29,15 +27,13 @@ export const TableFast = ({
 }) => {
     return (
         <TableProvider>
-            <Container>
-                {filterable && (
-                    <TextboxFilter position='right' style={{ width: '40%' }} />
-                )}
+            {filterable && (
+                <TextboxFilter position='right' style={{ width: '40%' }} />
+            )}
 
-                <Table style={style} className={className}>
-                    {children}
-                </Table>
-            </Container>
+            <Table style={style} className={className}>
+                {children}
+            </Table>
         </TableProvider>
     )
 }
