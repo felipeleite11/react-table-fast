@@ -6,50 +6,45 @@ import { TableContext } from '../../contexts/TableContext'
 import { THead } from './styles'
 
 export default function ({
-    columns,
-    sortable = true,
-    style = {},
-    className = ''
+  columns,
+  sortable = true,
+  style = {},
+  className = ''
 }) {
-    const {
-        setHeaders,
-        sortData,
-        sortDirection,
-        sortedBy,
-        deletion
-    } = useContext(TableContext)
+  const { setHeaders, sortData, sortDirection, sortedBy, deletion } =
+    useContext(TableContext)
 
-    useEffect(() => {
-        setHeaders(columns)
-    }, [])
+  useEffect(() => {
+    setHeaders(columns)
+  }, [])
 
-    return (
-        <THead sortable={sortable} style={style} className={className}>
-            <tr>
-                {columns.map((item) => (
-                    <th
-                        key={item.name}
-                        onClick={() => sortable && sortData(item.attr)}
-                        style={item.style || {}}
-                    >
-                        <div>
-                            {item.name}
+  return (
+    <THead sortable={sortable} style={style} className={className}>
+      <tr>
+        {columns.map((item) => (
+          <th
+            key={item.name}
+            onClick={() => sortable && sortData(item.attr)}
+            style={item.style || {}}
+          >
+            <div>
+              {item.name}
 
-                            {sortedBy === item.attr && (
-                                <Fragment>
-                                    {sortDirection === 'asc' ? (
-                                        <FaChevronUp size={12} />
-                                    ) : (
-                                        <FaChevronDown size={12} />
-                                    )}
-                                </Fragment>
-                            )}
-                        </div>
-                    </th>
-                ))}
+              {sortedBy === item.attr && (
+                <Fragment>
+                  {sortDirection === 'asc' ? (
+                    <FaChevronUp size={12} />
+                  ) : (
+                    <FaChevronDown size={12} />
+                  )}
+                </Fragment>
+              )}
+            </div>
+          </th>
+        ))}
 
-                {!!deletion && <th className='action'> </th>}
-            </tr>
-        </THead>
-    )
+        {!!deletion && <th className='action'> </th>}
+      </tr>
+    </THead>
+  )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TableFast, TableHeader, TableBody, TableFooter, TableAggregationFunctions, TableFormats, TableHoverEffects } from 'react-table-fast'
 
 import Hits from './Hits'
@@ -12,7 +12,7 @@ const containerStyle = {
 }
 
 const App = () => {
-  const [clickedRowData, setClickedRowData] = useState(null)
+  // const [clickedRowData, setClickedRowData] = useState(null)
 
   return (
     <div style={containerStyle}>
@@ -48,9 +48,9 @@ const App = () => {
             handler: row => {
               console.log(`Deleting ${row?.name}'s row...`)
             },
-            effect: 'fadeOutRight' // Accept any Animate.CSS animation
+            effect: 'fadeOutRight' // Accept any Animate.CSS animations
           }}
-          hoverEffect={TableHoverEffects.SCALE}
+          hoverEffect={TableHoverEffects.ROTATE}
         />
 
         <TableFooter
@@ -68,7 +68,7 @@ const App = () => {
         />
       </TableFast>
 
-      {clickedRowData && <h4>{`${clickedRowData.name}'s row was clicked!`}</h4>}
+      {/* {clickedRowData && <h4>{`${clickedRowData.name}'s row was clicked!`}</h4>} */}
     </div>
   )
 }

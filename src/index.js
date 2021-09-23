@@ -20,20 +20,20 @@ export const TableBody = Body
 export const TableFooter = Footer
 
 export const TableFast = ({
-    children,
-    filterable = false,
-    style = {},
-    className = ''
+  children,
+  filterable = false,
+  style = {},
+  className = ''
 }) => {
-    return (
-        <TableProvider>
-            {filterable && (
-                <TextboxFilter position='right' style={{ width: '40%' }} />
-            )}
+  return (
+    <TableProvider>
+      {filterable && (
+        <TextboxFilter position='right' style={{ width: '40%' }} />
+      )}
 
-            <Table style={style} className={className}>
-                {children}
-            </Table>
-        </TableProvider>
-    )
+      <Table style={style} className={className}>
+        {children}
+      </Table>
+    </TableProvider>
+  )
 }
